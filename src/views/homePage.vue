@@ -264,6 +264,8 @@
                         <el-popover placement="bottom" :title="item.name" :width="300" trigger="hover">
                           <template #reference>
                             <span>
+                              <!-- fix: :bug: reset the strengthen of player's current euipment which type is the same -->
+                              <!-- @mouseenter="getEquipmentInfo(item.id, item.type)" -->
                               <tag
                                 class="inventory-item"
                                 v-if="item.type == i.type"
@@ -271,8 +273,7 @@
                                 :type="item.quality"
                                 :closable="!item.lock"
                                 @close="inventoryClose(item)"
-                                @click="inventory(item.id, item.type)"
-                                @mouseenter="getEquipmentInfo(item.id, item.type)"
+                                @click="showInventoryInfo(item.id, item.type)"
                               >
                                 <el-icon v-if="item.lock">
                                   <Lock />
@@ -2216,7 +2217,7 @@
   }
 
   // 道具信息
-  const inventory = id => {
+  const showInventoryInfo = id => {
     inventoryInfo.value = getObjectById(id, player.value.inventory)
     inventoryShow.value = true
   }
