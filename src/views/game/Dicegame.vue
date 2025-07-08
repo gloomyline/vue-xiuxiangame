@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-  import { ref, watch, computed, defineEmits, onMounted } from 'vue'
+  import { ref, watch, computed, onMounted } from 'vue'
   import { useMainStore } from '@/plugins/store'
   import { gameNotifys } from '@/plugins/game'
 

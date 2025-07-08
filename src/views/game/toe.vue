@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-  import { ref, computed, defineEmits, onMounted } from 'vue'
+  import { ref, computed, onMounted } from 'vue'
   import { useMainStore } from '@/plugins/store'
 
   // 定义获胜组合

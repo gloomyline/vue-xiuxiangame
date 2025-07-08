@@ -32,7 +32,7 @@
 
 <script setup>
   import { useMainStore } from '@/plugins/store'
-  import { ref, computed, watch, onMounted, defineEmits } from 'vue'
+  import { ref, computed, watch, onMounted } from 'vue'
 
   const store = useMainStore()
   const type = {

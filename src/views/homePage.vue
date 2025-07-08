@@ -981,8 +981,8 @@
         <el-button type="warning" class="dialog-footer-button" @click="deleteScriptData">删除脚本</el-button>
         <el-divider>其他相关</el-divider>
         <el-button class="dialog-footer-button" @click="sellingEquipmentBox">批量处理</el-button>
-        <el-button type="primary" class="dialog-footer-button" @click="copyContent('qq')">官方群聊</el-button>
-        <el-button type="success" class="dialog-footer-button" @click="copyContent('url')">开源地址</el-button>
+        <!-- <el-button type="primary" class="dialog-footer-button" @click="copyContent('qq')">官方群聊</el-button>
+        <el-button type="success" class="dialog-footer-button" @click="copyContent('url')">开源地址</el-button> -->
         <el-divider>当前版本为: {{ ver }}</el-divider>
       </div>
     </el-dialog>
@@ -1386,7 +1386,7 @@
             errBox.value = true
             gameNotifys({
               title: '脚本导入失败',
-              message: '复制错误信息到QQ群内'
+              message: '复制错误信息发给作者'
             })
           }
         }
@@ -1437,7 +1437,7 @@
 
   // 重置
   const reset = () => {
-    storyText.value = '属性出错, 请添加QQ群:920930589, 上传"存档"并联系作者解决'
+    storyText.value = '属性出错, 上传"存档"并联系作者解决'
     ElMessageBox.confirm('你是否要导出存档?', '存档导出提示', {
       center: true,
       confirmButtonText: '确定'
@@ -1732,7 +1732,7 @@
       })
       return
     }
-    // 炼器确认弹窗
+    // 炼器确认弹
     ElMessageBox.confirm(
       item.strengthen >= 15 && !protect.value
         ? `当前装备炼器等级已达到+${item.strengthen}, 如果炼器失败该装备会销毁, 请问还需要炼器吗?`
@@ -1744,6 +1744,8 @@
       }
     )
       .then(() => {
+        // 扣除炼器石
+        player.value.props.strengtheningStone -= calculateCost;
         // 如果炼器成功
         if (Math.random() <= successRate) {
           // 攻击
@@ -1805,8 +1807,6 @@
             type: 'error'
           })
         }
-        // 扣除炼器石
-        player.value.props.strengtheningStone -= calculate
       })
       .catch(() => {})
   }

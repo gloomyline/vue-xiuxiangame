@@ -50,7 +50,6 @@
 
 <script setup>
   import { formatNumberToChineseUnit, gameNotifys } from '@/plugins/game'
-  import { defineProps, defineOptions } from 'vue'
 
   // 定义组件名称
   defineOptions({

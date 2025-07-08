@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-  import { ref, computed, defineEmits } from 'vue'
+  import { ref, computed } from 'vue'
   import { useMainStore } from '@/plugins/store'
 
   const store = useMainStore()
